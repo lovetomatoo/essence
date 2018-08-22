@@ -12,17 +12,22 @@ import android.util.Log;
  * 委托女朋友把礼物和钱送给丈母娘
  */
 
-public class ABoy {
+public class ABoy implements IPerson {
 
     //送礼
+    @Override
     public void giveGift() {
+        Log.i("guohongxin", "送礼物");
     }
 
     //送钱
+    @Override
     public void giveMoney() {
+        Log.i("guohongxin", "送钱");
     }
 
     //房产证
     public void houseProperty() {
+        Log.i("guohongxin", "送房子");
     }
 }

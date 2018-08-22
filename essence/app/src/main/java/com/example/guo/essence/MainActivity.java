@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import com.example.guo.essence.proxy.ABoy;
 import com.example.guo.essence.proxy.AGirl;
+import com.example.guo.essence.proxy.IPerson;
 import com.example.guo.essence.proxy.Operate;
 import com.example.guo.essence.proxy.OperateImpl;
 import com.example.guo.essence.proxy.TestInvocationHandler;
@@ -18,9 +19,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        AGirl aGirl = new AGirl(new ABoy());
-//        aGirl.giveGift();
-//        aGirl.giveMoney();
+        IPerson aBoy = new ABoy();
+        IPerson aGirl = new AGirl(aBoy);
+        aGirl.giveGift();
+        aGirl.giveMoney();
 
         TestInvocationHandler testInvocationHandler = new TestInvocationHandler(new OperateImpl());
         Operate operate = (Operate) Proxy.newProxyInstance(Operate.class.getClassLoader(), new Class[]{Operate.class}, testInvocationHandler);
@@ -28,5 +30,7 @@ public class MainActivity extends AppCompatActivity {
         operate.method1();
         operate.method2();
         operate.method3();
+
+
     }
 }
